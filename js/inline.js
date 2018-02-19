@@ -27,7 +27,7 @@ export function getSelectionInlineStyle(editorState: EditorState): Object {
     const inlineStyles = {};
     const styleList = editorState.getCurrentInlineStyle().toList().toJS();
     if(styleList) {
-      ['BOLD', 'ITALIC', 'UNDERLINE', 'STRIKETHROUGH', 'CODE', 'SUPERSCRIPT', 'SUBSCRIPT'].forEach((style) => {
+      ['UNBOLD', 'UNITALIC', 'UNUNDERLINE', 'BOLD', 'ITALIC', 'UNDERLINE', 'STRIKETHROUGH', 'CODE', 'SUPERSCRIPT', 'SUBSCRIPT'].forEach((style) => {
         inlineStyles[style] = styleList.indexOf(style) >= 0;
       });
       return inlineStyles;
@@ -38,6 +38,9 @@ export function getSelectionInlineStyle(editorState: EditorState): Object {
   const selectedBlocks = getSelectedBlocksList(editorState);
   if (selectedBlocks.size > 0) {
     const inlineStyles = {
+      UNBOLD: true,
+      UNITALIC: true,
+      UNUNDERLINE: true,
       BOLD: true,
       ITALIC: true,
       UNDERLINE: true,
@@ -58,7 +61,7 @@ export function getSelectionInlineStyle(editorState: EditorState): Object {
       }
       for (let j = blockStart; j < blockEnd; j += 1) {
         const inlineStylesAtOffset = selectedBlocks.get(i).getInlineStyleAt(j);
-        ['BOLD', 'ITALIC', 'UNDERLINE', 'STRIKETHROUGH', 'CODE', 'SUPERSCRIPT', 'SUBSCRIPT'].forEach((style) => {
+        ['UNBOLD', 'UNITALIC', 'UNUNDERLINE', 'BOLD', 'ITALIC', 'UNDERLINE', 'STRIKETHROUGH', 'CODE', 'SUPERSCRIPT', 'SUBSCRIPT'].forEach((style) => {
           inlineStyles[style] = inlineStyles[style] && inlineStylesAtOffset.get(style) === style;
         });
       }
@@ -220,7 +223,7 @@ export function toggleCustomInlineStyle(
 }
 
 /**
- * 
+ *
  */
 export function extractInlineStyle(editorState) {
   if(editorState) {
