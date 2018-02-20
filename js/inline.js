@@ -136,6 +136,15 @@ export const customInlineStylesMap =
     bgcolor: {},
     fontSize: {},
     fontFamily: {},
+    UNBOLD: {
+      fontWeight: 'normal',
+    },
+    UNITALIC: {
+      fontStyle: 'normal',
+    },
+    UNUNDERLINE: {
+      textDecoration: 'none',
+    },
     CODE: {
       fontFamily: 'monospace',
       wordWrap: 'break-word',
@@ -173,6 +182,9 @@ export const getCustomStyleMap = () => { // eslint-disable-line
     ...customInlineStylesMap.bgcolor,
     ...customInlineStylesMap.fontSize,
     ...customInlineStylesMap.fontFamily,
+    UNBOLD: customInlineStylesMap.UNBOLD,
+    UNITALIC: customInlineStylesMap.UNITALIC,
+    UNUNDERLINE: customInlineStylesMap.UNUNDERLINE,
     CODE: customInlineStylesMap.CODE,
     SUPERSCRIPT: customInlineStylesMap.SUPERSCRIPT,
     SUBSCRIPT: customInlineStylesMap.SUBSCRIPT,
