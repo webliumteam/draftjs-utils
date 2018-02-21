@@ -27,7 +27,7 @@ export function getSelectionInlineStyle(editorState: EditorState): Object {
     const inlineStyles = {};
     const styleList = editorState.getCurrentInlineStyle().toList().toJS();
     if(styleList) {
-      ['UNBOLD', 'UNITALIC', 'UNUNDERLINE', 'BOLD', 'ITALIC', 'UNDERLINE', 'STRIKETHROUGH', 'CODE', 'SUPERSCRIPT', 'SUBSCRIPT'].forEach((style) => {
+      ['UNBOLD', 'UNITALIC', 'BOLD', 'ITALIC', 'UNDERLINE', 'STRIKETHROUGH', 'CODE', 'SUPERSCRIPT', 'SUBSCRIPT'].forEach((style) => {
         inlineStyles[style] = styleList.indexOf(style) >= 0;
       });
       return inlineStyles;
@@ -40,7 +40,6 @@ export function getSelectionInlineStyle(editorState: EditorState): Object {
     const inlineStyles = {
       UNBOLD: true,
       UNITALIC: true,
-      UNUNDERLINE: true,
       BOLD: true,
       ITALIC: true,
       UNDERLINE: true,
@@ -61,7 +60,7 @@ export function getSelectionInlineStyle(editorState: EditorState): Object {
       }
       for (let j = blockStart; j < blockEnd; j += 1) {
         const inlineStylesAtOffset = selectedBlocks.get(i).getInlineStyleAt(j);
-        ['UNBOLD', 'UNITALIC', 'UNUNDERLINE', 'BOLD', 'ITALIC', 'UNDERLINE', 'STRIKETHROUGH', 'CODE', 'SUPERSCRIPT', 'SUBSCRIPT'].forEach((style) => {
+        ['UNBOLD', 'UNITALIC', 'BOLD', 'ITALIC', 'UNDERLINE', 'STRIKETHROUGH', 'CODE', 'SUPERSCRIPT', 'SUBSCRIPT'].forEach((style) => {
           inlineStyles[style] = inlineStyles[style] && inlineStylesAtOffset.get(style) === style;
         });
       }
@@ -142,9 +141,6 @@ export const customInlineStylesMap =
     UNITALIC: {
       fontStyle: 'normal',
     },
-    UNUNDERLINE: {
-      textDecoration: 'none',
-    },
     CODE: {
       fontFamily: 'monospace',
       wordWrap: 'break-word',
@@ -184,7 +180,6 @@ export const getCustomStyleMap = () => { // eslint-disable-line
     ...customInlineStylesMap.fontFamily,
     UNBOLD: customInlineStylesMap.UNBOLD,
     UNITALIC: customInlineStylesMap.UNITALIC,
-    UNUNDERLINE: customInlineStylesMap.UNUNDERLINE,
     CODE: customInlineStylesMap.CODE,
     SUPERSCRIPT: customInlineStylesMap.SUPERSCRIPT,
     SUBSCRIPT: customInlineStylesMap.SUBSCRIPT,
