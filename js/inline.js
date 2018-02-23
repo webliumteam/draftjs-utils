@@ -142,13 +142,24 @@ export const customInlineStylesMap =
       fontStyle: 'normal',
     },
     CODE: {
-      fontFamily: 'monospace',
-      wordWrap: 'break-word',
-      background: '#f7f9fa',
-      color: '#1b2733',
-      border: '1px solid #e6e8eb',
-      borderRadius: 3,
-      padding: '1px 3px',
+      light: {
+        fontFamily: 'monospace',
+        wordWrap: 'break-word',
+        background: '#f7f9fa',
+        color: '#1b2733',
+        border: '1px solid #e6e8eb',
+        borderRadius: 3,
+        padding: '1px 3px',
+      },
+      dark: {
+        fontFamily: 'monospace',
+        wordWrap: 'break-word',
+        background: '#3f3f3f',
+        color: '#ccced0',
+        border: '1px solid #232323',
+        borderRadius: 3,
+        padding: '1px 3px',
+      },
     },
     SUPERSCRIPT: {
       fontSize: 11,
@@ -174,7 +185,7 @@ const addToCustomStyleMap = (styleType, styleKey, style) => { // eslint-disable-
 /**
 * Combined map of all custon inline styles used to initialize editor.
 */
-export const getCustomStyleMap = () => { // eslint-disable-line
+export const getCustomStyleMap = (theme) => { // eslint-disable-line
   return {
     ...customInlineStylesMap.color,
     ...customInlineStylesMap.bgcolor,
@@ -182,7 +193,7 @@ export const getCustomStyleMap = () => { // eslint-disable-line
     ...customInlineStylesMap.fontFamily,
     UNBOLD: customInlineStylesMap.UNBOLD,
     UNITALIC: customInlineStylesMap.UNITALIC,
-    CODE: customInlineStylesMap.CODE,
+    CODE: customInlineStylesMap.CODE[theme],
     SUPERSCRIPT: customInlineStylesMap.SUPERSCRIPT,
     SUBSCRIPT: customInlineStylesMap.SUBSCRIPT,
   };
