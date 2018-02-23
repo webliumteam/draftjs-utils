@@ -144,7 +144,9 @@ export const customInlineStylesMap =
     CODE: {
       fontFamily: 'monospace',
       wordWrap: 'break-word',
-      background: '#f1f1f1',
+      background: '#f7f9fa',
+      color: '#1b2733',
+      border: '1px solid #e6e8eb',
       borderRadius: 3,
       padding: '1px 3px',
     },
