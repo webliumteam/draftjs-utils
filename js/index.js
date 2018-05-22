@@ -3,6 +3,7 @@
 import {
   getEntityRange,
   getCustomStyleMap,
+  getStyleAtOffset,
   toggleCustomInlineStyle,
   getSelectionEntity,
   extractInlineStyle,
@@ -40,6 +41,7 @@ module.exports = {
   getBlockBeforeSelectedBlock,
   getAllBlocks,
   getSelectedBlocksType,
+  getStyleAtOffset,
   removeSelectedBlocksStyle,
   getSelectionText,
   addLineBreakRemovingSelection,
