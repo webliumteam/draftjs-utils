@@ -263,7 +263,7 @@ export function extractInlineStyle(editorState) {
 /**
 * Function returns size at a offset.
 */
-function getStyleAtOffset(block: ContentBlock, stylePrefix: string, offset: number): any {
+export function getStyleAtOffset(block: ContentBlock, stylePrefix: string, offset: number): any {
   const styles = block.getInlineStyleAt(offset).toList();
   const style = styles.filter(s => s.startsWith(stylePrefix.toLowerCase()));
   if (style && style.size > 0) {
