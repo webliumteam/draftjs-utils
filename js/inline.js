@@ -294,7 +294,7 @@ export function getSelectionCustomInlineStyle(
   if (editorState && styles && styles.length > 0) {
     const currentSelection = editorState.getSelection();
     const inlineStyles = {};
-    if (currentSelection.isCollapsed) {
+    if (currentSelection.isCollapsed()) {
       styles.forEach((s) => {
         inlineStyles[s] = getCurrentInlineStyle(editorState, s);
       });
@@ -321,9 +321,9 @@ export function getSelectionCustomInlineStyle(
             });
           } else {
             styles.forEach((s) => {
-              if (inlineStyles[s] &&
+              if (inlineStyles[s] && inlineStyles[s] !== 'mixed' &&
                 inlineStyles[s] !== getStyleAtOffset(selectedBlocks.get(i), s, j)) {
-                inlineStyles[s] = undefined;
+                inlineStyles[s] = s === 'COLOR' ? 'mixed' : undefined;
               }
             });
           }
